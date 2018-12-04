@@ -149,3 +149,19 @@ function minimum(numbers) {
 // Note 2: Selection sort can be implemented using one array. Read the explanation at
 // https://courses.cs.vt.edu/csonline/Algorithms/Lessons/SelectionSort/index.html
 // to see how. This may make more sense to you.
+
+function selectionSort(array) {
+    let newArray = []
+    let copy = array.slice(0)
+
+    for (let i in copy) {
+        let min = copy.reduce((acc, curVal) => Math.min(acc, curVal))
+        if (i === min) {
+            // add to array
+            newArray.splice(0, 0, i)
+            // remove from array
+            copy.splice(i, 1)
+        }
+    }
+    return newArray
+}
