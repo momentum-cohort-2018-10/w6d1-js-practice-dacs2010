@@ -151,17 +151,40 @@ function minimum(numbers) {
 // to see how. This may make more sense to you.
 
 function selectionSort(array) {
-    let newArray = []
-    let copy = array.slice(0)
 
-    for (let i in copy) {
-        let min = copy.reduce((acc, curVal) => Math.min(acc, curVal))
-        if (i === min) {
-            // add to array
-            newArray.splice(0, 0, i)
-            // remove from array
-            copy.splice(i, 1)
+    function minimum(numbers) {
+        if (numbers.length === 0) {
+            return undefined
+        } else {
+            return numbers.reduce((acc, curVal) => Math.min(acc, curVal))
         }
+    }
+
+    let newArray = []
+    let min, minIndex
+
+
+    array = array.slice(0)
+    while (array.length > 0) {
+        // find minimum value in array
+        min = minimum(array)
+        // get index of minimum value of array
+        let x = array.indexOf(min)
+        // remove minimum value from array and push into newArray
+        newArray.push(min)
+        array.splice(x, 1)
+    // }
+
+    // for (let i in array) {
+    //     console.log(i)
+    //     min = minimum(array)
+    //     if (i < min){
+    //         newArray.push(min)
+    //         array.splice(i,1)
+    //     }else {
+    //         newArray.push(i)
+    //         array.splice(min, 1)
+    //     }
     }
     return newArray
 }
